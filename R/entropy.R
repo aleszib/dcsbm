@@ -111,7 +111,7 @@ entropy_corrected <- function (E, d, directed = FALSE)
     # Calculate part of entropy relating to different degrees
     degree_unique <- sort(unique(d))
     degree_counts <- table(d)
-    degree_entropy <- sum(degree_counts * log(factorial(degree_unique)))
+    degree_entropy <- sum(degree_counts * lfactorial(degree_unique))
     # TODO: Check if a factor "degree_unique" is missing here?!
 
     # Calculate part of entropy relating to block edge counts
@@ -133,10 +133,10 @@ entropy_corrected <- function (E, d, directed = FALSE)
     # Calculate part of entropy relating to different degrees
     degree_in_unique <- sort(unique(d_in))
     degree_in_counts <- table(d_in)
-    degree_in_entropy <- sum(degree_in_counts * log(factorial(degree_in_unique)))
+    degree_in_entropy <- sum(degree_in_counts * lfactorial(degree_in_unique))
     degree_ou_unique <- sort(unique(d_ou))
     degree_ou_counts <- table(d_ou)
-    degree_ou_entropy <- sum(degree_ou_counts * log(factorial(degree_ou_unique)))
+    degree_ou_entropy <- sum(degree_ou_counts * lfactorial(degree_ou_unique))
 
     # Calculate part of entropy relating to block edge counts
     e_in <- colSums(E)
